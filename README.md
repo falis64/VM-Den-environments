@@ -42,4 +42,10 @@ end
 
 5) Now we can use ```vagrant ssh`` to ssh into the vm and another terminal session will open up in the vm
 
-6) 
+
+# What makes a good dev environment?
+
+
+# 4 pillars of DevOps?
+
+
