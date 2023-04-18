@@ -42,6 +42,39 @@ end
 
 5) Now we can use ```vagrant ssh`` to ssh into the vm and another terminal session will open up in the vm
 
+6) Download the app and environment zip file and make sure to unzip it (you can do this double clicking on the right and selecting extract all)
+
+7) Now make sure to put in the Virtualisation folder and check on VSCode to see that it's there
+
+8) Now sync the app by using the command ```config.vm.synced_folder "app", "/home/vagrant/app"```
+
+9) To check that you have nginx installed, type ```http://192.168.20.100/``` into the browser and you should get this
+
+<img width="413" alt="image" src="https://user-images.githubusercontent.com/129381619/232787983-94df1a0f-b02e-4124-b675-bba52b9a2c6c.png">
+
+10) Now to install nodejs version 6.x, first use the command ```sudo apt-get install python-software-properties```
+
+11) Then use the command ```curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -```
+
+12) Finally use the command ```sudo apt-get install nodejs -y```
+
+13) You can check that you have the correct version of nodejs by using the command ```nodejs --version```. You shoould see something like this:
+
+<img width="233" alt="image" src="https://user-images.githubusercontent.com/129381619/232789921-5530802e-1d3d-4063-b723-cc680e92fa4c.png">
+
+14) Now to install pm2, use the commmand ```sudo npm install pm2 -g```
+
+15) Make sure you're in the app folder, you can do this by checking ```pwd``` or go into the file by ```cd```
+
+16) Once you're in the app, use the code ```node app.js``` 
+
+17) You should now see this:
+<img width="251" alt="image" src="https://user-images.githubusercontent.com/129381619/232795576-4865ab38-773d-4fa6-88a8-f404657fa519.png">
+
+18) You're now ready to go into your app, simply type ```http://192.168.20.100:3000/``` into the browser and you should see this:
+
+<img width="395" alt="image" src="https://user-images.githubusercontent.com/129381619/232796117-13c107aa-a043-4b7f-a072-73191740c697.png">
+
 
 # What makes a good dev environment?
 
