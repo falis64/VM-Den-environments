@@ -15,6 +15,21 @@ A developement environement is a set up of software tools and configurations tha
 
 The purpose of creating a dev environment is to provide a safe and isolated environment for developers to write and test their code without affecting the production environment. By using a dev environment, developers can ensure that their code is working correctly before deploying it to production, which can help to prevent bugs and errors from impacting end-users. The dev environment typically includes tools such as a code editor, a debugger, and a version control system.
 
+# What makes a good dev environment?
+
+<img width="348" alt="image" src="https://user-images.githubusercontent.com/129381619/232814142-303ac805-c234-41ed-af69-9b5f60dae6b0.png">
+
+# 4 Pillars of DevOps
+
+<img width="344" alt="image" src="https://user-images.githubusercontent.com/129381619/232818445-e548f1a6-ee06-4cf5-be5e-642f3c4d2eb9.png">
+
+# Monolith
+<img width="348" alt="image" src="https://user-images.githubusercontent.com/129381619/232814688-2666947f-ae87-4d58-bb60-9a35bb918b54.png">
+
+In software development, a monolith refers to a type of application architecture where the entire application is designed and built as a single, unified unit. This means that all the application's components, such as the user interface, business logic, and data storage, are tightly coupled and run as a single process.
+
+Monolithic architectures are typically built as a single codebase, with all the application logic and dependencies bundled together. This makes them relatively easy to develop and deploy, but they can become increasingly complex and difficult to maintain as the application grows.
+
 # What is a vagrant?
 
 ![image](https://user-images.githubusercontent.com/129381619/232559772-4ba5c83a-8b3e-424c-9811-3c51aaf099d6.png)
