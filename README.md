@@ -121,3 +121,33 @@ end
 18) You're now ready to go into your app, simply type ```http://192.168.20.100:3000/``` into the browser and you should see this:
 
 <img width="395" alt="image" src="https://user-images.githubusercontent.com/129381619/232796117-13c107aa-a043-4b7f-a072-73191740c697.png">
+
+# Automating all dependencies
+
+In order to automate all the dependencies, follow the steps below:
+
+1) Go on VSCode provision file and type this codes below:
+```
+sudo apt-get install python-software-properties
+curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -
+sudo apt-get install nodejs -y
+sudo npm install pm2 -g
+cd /home/vagrant/app
+sudo npm install
+```
+2) Now on your VSCode terminal, run the command ```vagrant up```
+
+3) Once it's finished running, go on Git Bash and run the command ```vagrant ssh``` - you'll get something like:
+
+<img width="372" alt="image" src="https://user-images.githubusercontent.com/129381619/232809823-6ec1a592-c76e-4e32-aa3c-59feab51a3f8.png">
+
+4) Once you have done this, ```cd``` into the directory where the app is, like below:
+
+<img width="203" alt="image" src="https://user-images.githubusercontent.com/129381619/232810037-7d054cb0-7177-4723-aeb6-ee2bec034c1a.png">
+
+5) Once you're in the app, run the command ```node app.js```. If it's successful, you'll see the message below:
+
+<img width="248" alt="image" src="https://user-images.githubusercontent.com/129381619/232810485-4d1002f6-6417-4a9e-bb7b-a0c28ad5ea13.png">
+
+You can now type ```http://192.168.20.100:3000/``` into the browser and if it's success you'll see a message welcoming you into the Sparta app.
+
