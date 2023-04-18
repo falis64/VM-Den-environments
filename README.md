@@ -38,9 +38,56 @@ Vagrant.configure("2") do |config|
 end
 ```
 
-4) Now type ```vagrant up``` in the terminal and this should send a command to start the VM
+4) Now type ```vagrant up``` in the VSCode terminal and this should send a command to start the VM in the virtual box
 
-5) Now we can use ```vagrant ssh`` to ssh into the vm and another terminal session will open up in the vm
+5) Now we can use ```vagrant ssh`` to access the vm and another terminal session will open up in the vm
+
+6) You can update and upgrade your vm using the following commands in the Git Bash app:
+
+```
+#!/bin/bash
+sudo apt update -y
+sudo apt upgrade -y
+sudo apt install nginx -y
+sudo systemctl restart nginx
+sudo systemctl enable nginx
+```
+
+7) In order to access the ip address for your vm, you need to update the vagrant file. As you can see below, we have used a private ip address and now type ```vagrant reload``` in the vscode and ```vagrant ssh``` in the Git Bash.
+
+```Vagrant.configure("2") do |config|
+
+  config.vm.box = "ubuntu/xenial64"
+  config.vm.network "private_network" ip: "192.168.10.100"
+
+end
+```
+8) You can check if the ip address is working properly by typing it into your web browser. If it is working then you should see a message welcoming you to Nginx.
+
+# Installing an app on Virtual Machine using Vagrant
+
+The content of your vagrant should be:
+
+```
+Vagrant.configure("2") do |config|
+
+  config.vm.box = "ubuntu/xenial64"
+  config.vm.network "private_network", ip: "192.168.20.100"
+
+  # provision in the vm
+  config.vm.provision "shell", path: "provision.sh"
+
+  # syncing the app folder
+  config.vm.synced_folder "app", "/home/vagrant/app"
+
+end
+```
+9) Now we can run a test to check our environment is correct by using the commands below:
+```gem install bundler`` this will allow us to bundle all tests together
+```bundle``` this bundles all the tests
+```rake spec``` this command will run the tests. It was created by the developers.
+
+10) If the test is successful, it'll show what we're missing. Now follow the steps below
 
 6) Download the app and environment zip file and make sure to unzip it (you can do this double clicking on the right and selecting extract all)
 
@@ -74,11 +121,3 @@ end
 18) You're now ready to go into your app, simply type ```http://192.168.20.100:3000/``` into the browser and you should see this:
 
 <img width="395" alt="image" src="https://user-images.githubusercontent.com/129381619/232796117-13c107aa-a043-4b7f-a072-73191740c697.png">
-
-
-# What makes a good dev environment?
-
-
-# 4 pillars of DevOps?
-
-
