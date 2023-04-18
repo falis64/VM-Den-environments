@@ -30,6 +30,8 @@ In software development, a monolith refers to a type of application architecture
 
 Monolithic architectures are typically built as a single codebase, with all the application logic and dependencies bundled together. This makes them relatively easy to develop and deploy, but they can become increasingly complex and difficult to maintain as the application grows.
 
+Monolithic applications are also challenging to scale horizontally, as any additional load requires replicating the entire application stack, resulting in significant resource consumption. Additionally, since all components are tightly coupled, any changes or updates to one part of the application require rebuilding and redeploying the entire monolith, which can be time-consuming and introduce additional risks.
+
 # What is a vagrant?
 
 ![image](https://user-images.githubusercontent.com/129381619/232559772-4ba5c83a-8b3e-424c-9811-3c51aaf099d6.png)
