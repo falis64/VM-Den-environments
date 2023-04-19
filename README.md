@@ -100,42 +100,47 @@ Vagrant.configure("2") do |config|
 end
 ```
 9) Now we can run a test to check our environment is correct by using the commands below:
-```gem install bundler`` this will instal bundler which will allow us to bundle all tests together
+
+In the vs terminal:
+
+```gem install bundler`` this will install bundler which will allow us to bundle all tests together
 ```bundle``` this bundles all the tests
 ```rake spec``` this command will run the tests. It was created by the developers.
 
 10) If the test is successful, it'll show what we're missing. Now follow the steps below
 
-6) Download the app and environment zip file and make sure to unzip it (you can do this double clicking on the right and selecting extract all)
+11) Download the app and environment zip file and make sure to unzip it (you can do this double clicking on the right and selecting extract all)
 
-7) Now make sure to put in the Virtualisation folder and check on VSCode to see that it's there
+12) Now make sure to put in the Virtualisation folder and check on VSCode to see that it's there
 
-8) Now sync the app by using the command ```config.vm.synced_folder "app", "/home/vagrant/app"```
+13) Now sync the app by using the command ```config.vm.synced_folder "app", "/home/vagrant/app"```
 
-9) To check that you have nginx installed, type ```http://192.168.20.100/``` into the browser and you should get this
+14) To check that you have nginx installed, type ```http://192.168.20.100/``` into the browser and you should get this
 
 <img width="413" alt="image" src="https://user-images.githubusercontent.com/129381619/232787983-94df1a0f-b02e-4124-b675-bba52b9a2c6c.png">
 
-10) Now to install nodejs version 6.x, first use the command ```sudo apt-get install python-software-properties```
+In the bash terminal:
 
-11) Then use the command ```curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -```
+15) Now to install nodejs version 6.x, first use the command ```sudo apt-get install python-software-properties```
 
-12) Finally use the command ```sudo apt-get install nodejs -y```
+16) Then use the command ```curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -``` - this will download the specified version of node.js
 
-13) You can check that you have the correct version of nodejs by using the command ```nodejs --version```. You shoould see something like this:
+17) Finally use the command ```sudo apt-get install nodejs -y``` - this installs ```node.js``` on the vm
+
+18) You can check that you have the correct version of nodejs by using the command ```nodejs --version```. You shoould see something like this:
 
 <img width="233" alt="image" src="https://user-images.githubusercontent.com/129381619/232789921-5530802e-1d3d-4063-b723-cc680e92fa4c.png">
 
-14) Now to install pm2, use the commmand ```sudo npm install pm2 -g```
+19) Now to install pm2, use the commmand ```sudo npm install pm2 -g```
 
-15) Make sure you're in the app folder, you can do this by checking ```pwd``` or go into the file by ```cd```
+20) Make sure you're in the app folder, you can do this by checking ```pwd``` or go into the file by ```cd```
 
-16) Once you're in the app, use the code ```node app.js``` 
+21) Once you're in the app, use the code ```node app.js``` which will run the app
 
-17) You should now see this:
+22) You should now see this:
 <img width="251" alt="image" src="https://user-images.githubusercontent.com/129381619/232795576-4865ab38-773d-4fa6-88a8-f404657fa519.png">
 
-18) You're now ready to go into your app, simply type ```http://192.168.20.100:3000/``` into the browser and you should see this:
+23) You're now ready to go into your app, simply type ```192.168.20.100:3000``` into the browser and you should see this:
 
 <img width="395" alt="image" src="https://user-images.githubusercontent.com/129381619/232796117-13c107aa-a043-4b7f-a072-73191740c697.png">
 
