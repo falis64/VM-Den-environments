@@ -173,3 +173,40 @@ sudo npm install
 
 You can now type ```http://192.168.20.100:3000/``` into the browser and if it's success you'll see a message welcoming you into the Sparta app.
 
+# DB
+
+- add new line to vagrant file ```config.vm.define "app" do |app|``
+
+- changed all the config commands to app instead of app - so that we can give instructions to just app
+
+- make sure all the lines below the new one are indented under the new config line so that it knows it relates to the vm (first line)
+
+- should look like:
+```
+Vagrant.configure("2") do |config|
+
+  config.vm.define "app" do |app|
+   app.vm.box = "ubuntu/xenial64"
+   app.vm.network "private_network", ip: "192.168.20.100"
+   app.vm.provision "shell", path: "provision.sh"
+   app.vm.synced_folder "app", "/home/vagrant/app"
+  end
+  
+
+  config.vm.define "db" do |db|
+    db.vm.box = "ubuntu/xenial64"
+    db.vm.network "private_network", ip: "192.168.20.150"
+  end
+
+end
+```
+- if you run vagrant up, you should see that it recognises both configs. You should be able to see that both vms are running. 
+
+
+- now in bash terminal, cd into the directory your files are in . mine's Virtualisation so for me it'd be this path; ```Falis@Falislaptop MINGW64 ~/OneDrive/Documents/Virtualisation```
+
+- now use ```vagrant ssh app/db`` to go into the one you want (use the one you want or you can open both 
+in seperate bash terminals) like this:
+
+<img width="389" alt="image" src="https://user-images.githubusercontent.com/129381619/233063687-5afd7033-2086-4a98-87fb-4f8df4803fb5.png">
+
