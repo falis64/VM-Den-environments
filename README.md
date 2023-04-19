@@ -81,7 +81,7 @@ end
 ```
 8) You can check if the ip address is working properly by typing it into your web browser. If it is working then you should see a message welcoming you to Nginx.
 
-# Installing an app on Virtual Machine using Vagrant
+# Running automated tests and deploying the app
 
 The content of your vagrant should be:
 
@@ -100,7 +100,7 @@ Vagrant.configure("2") do |config|
 end
 ```
 9) Now we can run a test to check our environment is correct by using the commands below:
-```gem install bundler`` this will allow us to bundle all tests together
+```gem install bundler`` this will instal bundler which will allow us to bundle all tests together
 ```bundle``` this bundles all the tests
 ```rake spec``` this command will run the tests. It was created by the developers.
 
