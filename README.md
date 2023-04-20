@@ -210,7 +210,7 @@ end
 
 2) Now in the Git bash terminal, cd into the folder your files are in . mine's Virtualisation so for me it'd be this path; ```Falis@Falislaptop MINGW64 ~/OneDrive/Documents/Virtualisation```
 
-- Use ```vagrant ssh db`` to go into the db machine
+- Use ```vagrant ssh db``` to go into the db machine
 
 - Run the following commands:
 ```
@@ -234,7 +234,7 @@ At this stage you should get a message along the lines of 'mongodb 3.2 release s
 - sudo systemctl start mongod - starts mongodb
 
 - sudo systemctl status mongod - checks status to make sure mongod is running
-
+```
 # Provisioning MongoDB
 
 Now we're going to be looking at how to create a new provision file (we already have one but we want to create a new one instead of adding to the one we have)
