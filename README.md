@@ -173,15 +173,17 @@ sudo npm install
 
 You can now type ```http://192.168.20.100:3000/``` into the browser and if it's success you'll see a message welcoming you into the Sparta app.
 
-# DB
+# Creating multiples vms in vagrant
 
-- add new line to vagrant file ```config.vm.define "app" do |app|``
+- Open your vagrant file and add a new line at the top to vagrant file ```config.vm.define "app" do |app|``
 
-- changed all the config commands to app instead of app - so that we can give instructions to just app
+- changed all the 'config' to app - so that we can give instructions to just app
 
 - make sure all the lines below the new one are indented under the new config line so that it knows it relates to the vm (first line)
 
-- should look like:
+- We added another vm (db). 
+
+- It should look like:
 ```
 Vagrant.configure("2") do |config|
 
@@ -200,13 +202,76 @@ Vagrant.configure("2") do |config|
 
 end
 ```
-- if you run vagrant up, you should see that it recognises both configs. You should be able to see that both vms are running. 
+- if you run vagrant up, you should see that it recognises both vms. You should be able to see that both vms are running. 
 
+# Installing MongoDB on a vm
 
-- now in bash terminal, cd into the directory your files are in . mine's Virtualisation so for me it'd be this path; ```Falis@Falislaptop MINGW64 ~/OneDrive/Documents/Virtualisation```
+1) Start yor db vm by using the command `vagrant up db` 
 
-- now use ```vagrant ssh app/db`` to go into the one you want (use the one you want or you can open both 
-in seperate bash terminals) like this:
+2) Now in the Git bash terminal, cd into the folder your files are in . mine's Virtualisation so for me it'd be this path; ```Falis@Falislaptop MINGW64 ~/OneDrive/Documents/Virtualisation```
 
-<img width="389" alt="image" src="https://user-images.githubusercontent.com/129381619/233063687-5afd7033-2086-4a98-87fb-4f8df4803fb5.png">
+- Use ```vagrant ssh db`` to go into the db machine
+
+- Run the following commands:
+```
+- Sudo apt update -y - updates linux
+
+- sudo apt upgrade -y - upgardes linux
+
+- sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv D68FA50FEA312927
+ - gives mongodb a public key
+ 
+- echo "deb https://repo.mongodb.org/apt/ubuntu xenial/mongodb-org/3.2 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-3.2.list - verifies the key
+
+At this stage you should get a message along the lines of 'mongodb 3.2 release signing key'
+
+- sudo apt update -y - grabs mongo again
+
+- sudo apt upgrade -y - installs updates again
+
+- sudo apt-get install -y mongodb-org=3.2.20 mongodb-org-server=3.2.20 mongodb-org-shell=3.2.20 mongodb-org-mongos=3.2.20 mongodb-org-tools=3.2.20 - installs the specified version of mongodb, in this case its mongodb 3.2.20
+
+- sudo systemctl start mongod - starts mongodb
+
+- sudo systemctl status mongod - checks status to make sure mongod is running
+
+# Provisioning MongoDB
+
+Now we're going to be looking at how to create a new provision file (we already have one but we want to create a new one instead of adding to the one we have)
+
+1) Create a new folder in your Virtualisation folder, I named mine prvisioning_db, and then create a file inside this new folder called provisioning_sh
+
+2) Go inside the provisioning_sh file and type up the commands you want. This is how my script looks like:
+
+```
+sudo apt update -y 
+
+sudo apt upgrade -y
+
+sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv D68FA50FEA312927
+
+echo "deb https://repo.mongodb.org/apt/ubuntu xenial/mongodb-org/3.2 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-3.2.list
+
+sudo apt update -y 
+
+sudo apt upgrade -y
+
+sudo apt-get install -y mongodb-org=3.2.20 mongodb-org-server=3.2.20 mongodb-org-shell=3.2.20 mongodb-org-mongos=3.2.20 mongodb-org-tools=3.2.20
+
+sudo systemctl start mongod
+```
+3) Now go in your vagrant file and in your db config and add the following line ```db.vm.provision "shell", path: ".vagrant/provisioning_db/provisioning.sh"```. This will tell the file to run the provisioning script.
+
+Your vagrant file script should look like this now:
+
+<img width="449" alt="image" src="https://user-images.githubusercontent.com/129381619/233308241-4fe85e6e-fc49-4e77-967b-404964fed5c7.png">
+
+4) Now to check that it worked, start your vm by using ```vagrant up db```
+
+5) Once that runs successfully, go in the bash terminal and cd into where Vagrant file is 
+
+6) Run the command ```vagrant ssh db``` - this will connect to the db vm
+
+7) Use ```sudo systemctl status mongod``` - this will check that mongod is running
+
 
